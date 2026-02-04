@@ -1,61 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>For Ana 💖</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Ana 💖</title>
 
-  <style>
-    body {
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      background: linear-gradient(135deg, #ff758c, #ff7eb3);
-      height: 100vh;
-      margin: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card {
+    background: white;
+    padding: 30px 35px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+    max-width: 90%;
+    z-index: 10;
+  }
+
+  h1 {
+    color: #ff3b6f;
+    font-size: 22px;
+  }
+
+  #tease {
+    min-height: 24px;
+    margin: 15px 0;
+    color: #ff7a9c;
+  }
+
+  button {
+    padding: 12px 26px;
+    font-size: 18px;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+  }
+
+  #yes {
+    background: #ff3b6f;
+    color: white;
+    margin-right: 15px;
+  }
+
+  #no {
+    background: #d3d3d3;
+    position: absolute;
+  }
+</style>
+</head>
+
+<body>
+<div class="wrapper">
+
+  <div class="card" id="card">
+    <h1>Hi my beloved Ana 💖<br>Can you be my Valentine?</h1>
+    <div id="tease"></div>
+    <button id="yes" onclick="accepted()">Yes 💘</button>
+    <button id="no">No 🙃</button>
+  </div>
+
+</div>
+
+<script>
+  const noBtn = document.getElementById("no");
+  const teaseText = document.getElementById("tease");
+  const wrapper = document.querySelector(".wrapper");
+
+  const teasers = [
+    "No is not an option 😌",
+    "no no baguette 🥖",
+    "think wisely 🤔💖",
+    "no is not an option ehe 😏"
+  ];
+
+  function moveNoButton() {
+    const maxX = wrapper.clientWidth - noBtn.offsetWidth;
+    const maxY = wrapper.clientHeight - noBtn.offsetHeight;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+
+    teaseText.textContent =
+      teasers[Math.floor(Math.random() * teasers.length)];
+  }
+
+  noBtn.addEventListener("mouseover", moveNoButton);
+
+  noBtn.addEventListener("touchstart", e => {
+    e.preventDefault();
+    moveNoButton();
+  });
+
+  document.addEventListener("touchmove", e => {
+    const touch = e.touches[0];
+    const rect = noBtn.getBoundingClientRect();
+
+    if (
+      Math.abs(touch.clientX - rect.left) < 100 &&
+      Math.abs(touch.clientY - rect.top) < 100
+    ) {
+      moveNoButton();
     }
-    .card {
-     background: white;
-     padding: 35px 45px;
-     border-radius: 22px;
-     text-align: center;
-     box-shadow: 0 15px 30px rgba(0,0,0,0.25);
-     position: relative;
-      max-width: 90%;
-      z-index: 10;
-     }
+  });
 
-   
+  function accepted() {
+    document.body.innerHTML = `
+      <div style="
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+        color:white;
+        font-family:'Comic Sans MS';
+      ">
+        <h1>
+          YAYYYY ANA 💖🥰<br><br>
+          You chose wisely 😌<br><br>
+          I can’t wait to spend Valentine’s with you 🌹
+        </h1>
+      </div>
+    `;
+  }
+</script>
 
-    h1 {
-      color: #ff3b6f;
-      margin-bottom: 15px;
-    }
+</body>
+</html>
 
-    #tease {
-      color: #ff7a9c;
-      font-size: 16px;
-      margin-bottom: 20px;
-      min-height: 22px;
-    }
-
-    button {
-      padding: 14px 28px;
-      font-size: 18px;
-      border: none;
-      border-radius: 14px;
-      cursor: pointer;
-      touch-action: manipulation;
-    }
-
-    #yes {
-      background-color: #ff3b6f;
-      color: white;
-      margin-right: 20px;
-    }
-
-    #no {
-      background-color: #d3d3d3;
-      position: absolute;
