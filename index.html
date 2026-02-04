@@ -1,175 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Ana 💖</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Ana 💖</title>
 
-<style>
-  .photo {
-  width: 180px;
-  max-width: 100%;
-  border-radius: 15px;
-  margin: 15px 0;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
 
-  /* Fade-in animation */
-  opacity: 0;
-  animation: fadeIn 1.8s ease forwards;
-}
+    .wrapper {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+    .card {
+      background: white;
+      padding: 30px 35px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+      max-width: 90%;
+      z-index: 10;
+    }
 
-  body {
-    margin: 0;
-    height: 100vh;
-    background: linear-gradient(135deg, #ff758c, #ff7eb3);
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-  }
+    h1 {
+      color: #ff3b6f;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
 
-  .wrapper {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+    /* 🫶 Fade-in image */
+    .photo {
+      width: 180px;
+      max-width: 100%;
+      border-radius: 15px;
+      margin: 15px 0;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 
-  .card {
-    background: white;
-    padding: 30px 35px;
-    border-radius: 20px;
-    text-align: center;
-    box-shadow: 0 12px 25px rgba(0,0,0,0.25);
-    max-width: 90%;
-    z-index: 10;
-  }
+      opacity: 0;
+      animation: fadeIn 1.8s ease forwards;
+    }
 
-  h1 {
-    color: #ff3b6f;
-    font-size: 22px;
-  }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-  #tease {
-    min-height: 24px;
-    margin: 15px 0;
-    color: #ff7a9c;
-  }
+    #tease {
+      min-height: 24px;
+      margin: 10px 0;
+      color: #ff7a9c;
+    }
 
-  button {
-    padding: 12px 26px;
-    font-size: 18px;
-    border: none;
-    border-radius: 14px;
-    cursor: pointer;
-  }
+    button {
+      padding: 12px 26px;
+      font-size: 18px;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+    }
 
-  #yes {
-    background: #ff3b6f;
-    color: white;
-    margin-right: 15px;
-  }
+    #yes {
+      background: #ff3b6f;
+      color: white;
+      margin-right: 15px;
+    }
 
-  #no {
-    background: #d3d3d3;
-    position: absolute;
-  }
-</style>
+    #no {
+      background: #d3d3d3;
+      position: absolute;
+    }
+  </style>
 </head>
 
 <body>
-<div class="wrapper">
+  <div class="wrapper">
+    <div class="card">
 
-  <div class="card" id="card">
-    <h1>Hi my beloved Ana 💖<br>Will you be my Valentine?</h1>
-    <ung src="images/ana.jpg alt="Ana" class="photo">
-    <div id="tease"></div>
-    <button id="yes" onclick="accepted()">Yes 💘</button>
-    <button id="no">No 🙃</button>
+      <!-- 💖 TEXT -->
+      <h1>
+        Hi my beloved Ana 💖<br>
+        Will you be my Valentine?
+      </h1>
+
+      <!-- 🫶 IMAGE (FADE-IN) -->
+      <img src="images/ana.jpg" alt="Ana" class="photo">
+
+      <!-- 😈 TEASING TEXT -->
+      <div id="tease"></div>
+
+      <!-- 💘 BUTTONS -->
+      <button id="yes" onclick="accepted()">Yes 💘</button>
+      <button id="no">No 🙃</button>
+
+    </div>
   </div>
 
-</div>
+  <script>
+    const noBtn = document.getElementById("no");
+    const teaseText = document.getElementById("tease");
+    const wrapper = document.querySelector(".wrapper");
 
-<script>
-  const noBtn = document.getElementById("no");
-  const teaseText = document.getElementById("tease");
-  const wrapper = document.querySelector(".wrapper");
+    const teasers = [
+      "No is not an option 😌",
+      "no no baguette 🥖",
+      "think wisely 🤔💖",
+      "no is not an option ehe 😏"
+    ];
 
-  const teasers = [
-    "No is not an option 😌",
-    "no no baguette 🥖",
-    "think wisely 🤔💖",
-    "no is not an option ehe 😏"
-  ];
+    function moveNoButton() {
+      const maxX = wrapper.clientWidth - noBtn.offsetWidth;
+      const maxY = wrapper.clientHeight - noBtn.offsetHeight;
 
-  function moveNoButton() {
-    const maxX = wrapper.clientWidth - noBtn.offsetWidth;
-    const maxY = wrapper.clientHeight - noBtn.offsetHeight;
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
 
-    const x = Math.random() * maxX;
-    const y = Math.random() * maxY;
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
 
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
-
-    teaseText.textContent =
-      teasers[Math.floor(Math.random() * teasers.length)];
-  }
-
-  noBtn.addEventListener("mouseover", moveNoButton);
-
-  noBtn.addEventListener("touchstart", e => {
-    e.preventDefault();
-    moveNoButton();
-  });
-
-  document.addEventListener("touchmove", e => {
-    const touch = e.touches[0];
-    const rect = noBtn.getBoundingClientRect();
-
-    if (
-      Math.abs(touch.clientX - rect.left) < 100 &&
-      Math.abs(touch.clientY - rect.top) < 100
-    ) {
-      moveNoButton();
+      teaseText.textContent =
+        teasers[Math.floor(Math.random() * teasers.length)];
     }
-  });
 
-  function accepted() {
-    document.body.innerHTML = `
-      <div style="
-        height:100vh;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        text-align:center;
-        color:white;
-        font-family:'Comic Sans MS';
-      ">
-        <h1>
-          YAYYYY ANA 💖🥰<br><br>
-          You chose wisely 😌<br><br>
-          I can’t wait to spend Valentine’s with you 🌹
-        </h1>
-      </div>
-    `;
-  }
-</script>
+    noBtn.addEventListener("mouseover", moveNoButton);
+    noBtn.addEventListener("touchstart", e => {
+      e.preventDefault();
+      moveNoButton();
+    });
 
+    document.addEventListener("touchmove", e => {
+      const touch = e.touches[0];
+      const rect = noBtn.getBoundingClientRect();
+
+      if (
+        Math.abs(touch.clientX - rect.left) < 100 &&
+        Math.abs(touch.clientY - rect.top) < 100
+      ) {
+        moveNoButton();
+      }
+    });
+
+    function accepted() {
+      document.body.innerHTML = `
+        <div style="
+          height:100vh;
+          display:flex;
+          justify-content:center;
+          align-items:center;
+          text-align:center;
+          color:white;
+          font-family:'Comic Sans MS';
+        ">
+          <h1>
+            YAYYYY ANA 💖🥰<br><br>
+            You chose wisely 😌<br><br>
+            I can’t wait to spend Valentine’s with you 🌹
+          </h1>
+        </div>
+      `;
+    }
+  </script>
 </body>
 </html>
-
