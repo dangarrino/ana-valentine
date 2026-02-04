@@ -6,6 +6,29 @@
 <title>For Ana 💖</title>
 
 <style>
+  .photo {
+  width: 180px;
+  max-width: 100%;
+  border-radius: 15px;
+  margin: 15px 0;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+
+  /* Fade-in animation */
+  opacity: 0;
+  animation: fadeIn 1.8s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
   body {
     margin: 0;
     height: 100vh;
@@ -73,6 +96,7 @@
 
   <div class="card" id="card">
     <h1>Hi my beloved Ana 💖<br>Will you be my Valentine?</h1>
+    <ung src="images/ana.jpg alt="Ana" class="photo">
     <div id="tease"></div>
     <button id="yes" onclick="accepted()">Yes 💘</button>
     <button id="no">No 🙃</button>
